@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Mapbox GL JS with Navigation Controls, Full Screen Button, and Recenter Button</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+
+</head>
+<body>
+
+<style>
+  #recenter-button {
+    display: block;
+    position: absolute;
+    top: : 0;
+    right: 0;
+    margin-top: 145px;
+    margin-right: 10px;
+    width: 29px;
+    height: 29px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background: #ffffff;
+    border: none;  }
+</style>
+
+<div id='map'></div>
+
+<button id='recenter-button'>&nbsp;</button>
+
+<script>
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoicWIzNjAiLCJhIjoiY2wyYjV6bWUwMDRhMDNrbDYyZjZhYTlrdCJ9.49DMchC69eskDk6y6yoDKw';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/qb360/cl6jy0b6l000m14q9koyrsyof',
+    center: [-97.209269, 32.860273], // Default center coordinates
+    zoom: 14,
+    pitch: 0,
+    bearing: 0
+  });
+
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
+
+  // Add a fullscreen control to the map.
+  map.addControl(new mapboxgl.FullscreenControl());
+
+  // Add a click event listener to the recenter button.
+  document.getElementById('recenter-button').addEventListener('click', function() {
+    // Set the map's center and zoom level to the default values.
+    map.setCenter([-97.209269, 32.860273]);
+    map.setZoom(12);
+  });
+</script>
+
+</body>
+</html>
